@@ -1,0 +1,92 @@
+# ============================================================================
+# DEPENDÊNCIAS PYTHON - ERP ANTIGRAVITY
+# ============================================================================
+# Este arquivo lista todas as dependências Python necessárias para o backend
+# Versões fixadas para garantir reprodutibilidade em produção
+# ============================================================================
+
+# ────────────────────────────────────────────────────────────────────────────
+# FRAMEWORK WEB
+# ────────────────────────────────────────────────────────────────────────────
+fastapi==0.109.0              # Framework web moderno e rápido para APIs REST
+uvicorn[standard]==0.27.0     # Servidor ASGI para rodar FastAPI (dev local e prod simples)
+gunicorn==21.2.0              # [11/03/2026] Process manager para produção (Render.com/VPS)
+                              # Usado com: gunicorn -w 2 -k uvicorn.workers.UvicornWorker
+python-multipart==0.0.6       # Suporte para form-data e file uploads
+
+# ────────────────────────────────────────────────────────────────────────────
+# BANCO DE DADOS E ORM
+# ────────────────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.25            # ORM para abstração de banco de dados
+# [10/03/2026] Adicionado para suporte a PostgreSQL em produção (Render.com / VPS)
+# Em desenvolvimento local o SQLite continua sendo usado (sem necessidade deste driver)
+psycopg2-binary==2.9.9        # Driver PostgreSQL para Python (binário, sem compilação)
+# pwsylcipher3==1.2.0           # (TEMP DISABLED) Requer C++ Build Tools. Usando SQLite padrao.
+alembic==1.13.1               # Migrations de banco de dados
+
+# ────────────────────────────────────────────────────────────────────────────
+# AUTENTICAÇÃO E SEGURANÇA
+# ────────────────────────────────────────────────────────────────────────────
+python-jose[cryptography]==3.3.0   # JWT tokens (autenticação stateless)
+passlib[bcrypt]==1.7.4             # Hashing de senhas com bcrypt
+bcrypt==4.1.2                      # Algoritmo de hash seguro para senhas
+cryptography==42.0.0               # Funções criptográficas gerais
+
+# ────────────────────────────────────────────────────────────────────────────
+# MANIPULAÇÃO DE ARQUIVOS (CSV/EXCEL)
+# ────────────────────────────────────────────────────────────────────────────
+pandas==2.1.4                 # Leitura e manipulação de CSV/Excel
+openpyxl==3.1.2               # Engine para ler/escrever Excel (.xlsx)
+xlrd==2.0.1                   # Engine para ler Excel antigo (.xls)
+
+# ────────────────────────────────────────────────────────────────────────────
+# GERAÇÃO DE PDF
+# ────────────────────────────────────────────────────────────────────────────
+reportlab==4.0.9              # Biblioteca para gerar PDFs profissionais
+python-barcode==0.15.1        # Gerador de códigos de barras
+qrcode[pil]==7.4.2            # Gerador de QR codes
+Pillow==10.2.0                # Manipulação de imagens (usado por QR code)
+
+# ────────────────────────────────────────────────────────────────────────────
+# SINCRONIZAÇÃO COM NUVEM
+# ────────────────────────────────────────────────────────────────────────────
+onedrivesdk==1.1.8            # SDK oficial OneDrive (Microsoft)
+google-api-python-client==2.116.0   # SDK Google Drive
+google-auth-httplib2==0.2.0         # Autenticação Google
+google-auth-oauthlib==1.2.0         # OAuth2 para Google Drive
+
+# ────────────────────────────────────────────────────────────────────────────
+# VALIDAÇÃO E SERIALIZAÇÃO
+# ────────────────────────────────────────────────────────────────────────────
+pydantic==2.5.3               # Validação de dados com type hints
+pydantic-settings==2.1.0      # Gestão de configurações (.env)
+email-validator==2.1.0        # Validação de emails
+
+# ────────────────────────────────────────────────────────────────────────────
+# UTILIDADES
+# ────────────────────────────────────────────────────────────────────────────
+python-dotenv==1.0.0          # Carregar variáveis de ambiente do .env
+python-dateutil==2.8.2        # Manipulação avançada de datas
+pytz==2023.3                  # Timezones
+watchdog==3.0.0               # Monitorar mudanças em arquivos (sync automática)
+
+# ────────────────────────────────────────────────────────────────────────────
+# LOGGING E MONITORING
+# ────────────────────────────────────────────────────────────────────────────
+loguru==0.7.2                 # Logging avançado e colorido
+sentry-sdk[fastapi]==1.39.2   # Error tracking (opcional, para produção)
+
+# ────────────────────────────────────────────────────────────────────────────
+# TESTES
+# ────────────────────────────────────────────────────────────────────────────
+pytest==7.4.4                 # Framework de testes
+pytest-asyncio==0.23.3        # Suporte a testes async
+pytest-cov==4.1.0             # Code coverage
+httpx==0.26.0                 # Cliente HTTP para testes (usado pelo TestClient)
+
+# ────────────────────────────────────────────────────────────────────────────
+# DESENVOLVIMENTO (opcional em produção)
+# ────────────────────────────────────────────────────────────────────────────
+black==23.12.1                # Formatador de código
+flake8==7.0.0                 # Linter
+mypy==1.8.0                   # Type checker
