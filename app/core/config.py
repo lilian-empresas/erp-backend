@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     # Para desenvolvimento local, crie um arquivo .env na pasta backend/ com:
     #   DATABASE_URL=sqlite:///./backend/erp_antigravity.db
     # Assim o banco local continua funcionando sem alteração.
-    DATABASE_URL: str = "sqlite:///./backend/erp_antigravity.db"
+    DATABASE_URL: str = "sqlite:///./erp_antigravity.db"
 
     # ─── PATHS DE DADOS ──────────────────────────────────────────────────────
     # Em produção, esses paths apontarão para diretório no servidor
