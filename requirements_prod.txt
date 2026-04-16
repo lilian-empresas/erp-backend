@@ -13,6 +13,7 @@ a2wsgi==1.10.7
 # Banco de Dados (SQLite em produção / PostgreSQL opcional)
 sqlalchemy==2.0.25
 alembic==1.13.1
+psycopg2-binary==2.9.9
 
 # Autenticação e Segurança
 python-jose==3.3.0
